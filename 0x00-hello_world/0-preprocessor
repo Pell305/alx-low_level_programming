@@ -1,2 +1,2 @@
 #!/bin/bash
-cpp -o output_file.c input_file.c
+gcc -E -o output_file.c input_file.c
