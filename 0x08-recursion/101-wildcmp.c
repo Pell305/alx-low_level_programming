@@ -14,13 +14,10 @@ int wildcmp(char *s1, char *s2)
 		if (*(s2 + 1) == '\0')
 			return (1); /* The pattern * matches any string. */
 
-		while (*s1)
-		{
-			if (wildcmp(s1, s2 + 1))
-				return (1); /* Recursively match rest of the strings. */
-			s1++;
-		}
-		return (0); /* No matching substring found. */
+		if (*s1 == '\0')
+			return (wildcmp(s1, s2 + 1)); /* Skip one character in s2. */
+
+		return (wildcmp(s1 + 1, s2) || wildcmp(s1, s2 + 1));
 	}
 
 	if (*s1 == *s2)
